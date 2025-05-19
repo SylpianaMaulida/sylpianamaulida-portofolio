@@ -695,82 +695,105 @@ Currently, I’m focusing on sharpening my skills in UI/UX Design and open to ex
       <div class="col-md-7 heading-section text-center ftco-animate">
         <h1 class="big big-2">Contact</h1>
         <h2 class="mb-4">Contact Me</h2>
-        <p>Let's connect! Reach me through these platforms or drop me a message directly.</p>
+        <p>If you have any questions, cooperation, or other information to share, please fill out the form below. I will respond as soon as possible.</p>
       </div>
     </div>
 
-    <div class="row d-flex contact-info mb-5">
-      <!-- 4 kotak pertama -->
-      <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-        <div class="align-self-stretch box p-4 text-center">
-          <div class="icon d-flex align-items-center justify-content-center">
-            <i class="fab fa-instagram fa-2x"></i>
-          </div>
-          <h3 class="mb-4">Instagram</h3>
-          <p><a href="https://www.instagram.com/sylpnmld?igsh=MWw1d2RwOGFiaGFhdQ==" target="_blank">@sylpnmld</a></p>
-        </div>
+    <!-- FORM CONTACT -->
+    <div class="row justify-content-center mb-5">
+  <div class="col-md-8">
+    <form id="contactForm" action="https://formsubmit.co/sylpianamaulida@gmail.com" method="POST" class="bg-dark p-4 rounded shadow">
+      <!-- Hidden Fields -->
+      <input type="hidden" name="_captcha" value="false">
+      <!-- Hilangkan _next supaya gak redirect -->
+
+      <div class="form-group">
+        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
       </div>
-      <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-        <div class="align-self-stretch box p-4 text-center">
-          <div class="icon d-flex align-items-center justify-content-center">
-            <i class="fab fa-linkedin fa-2x"></i>
-          </div>
-          <h3 class="mb-4">LinkedIn</h3>
-          <p><a href="www.linkedin.com/in/sylpiana-maulida-3720a2308" target="_blank">sylpiana maulida</a></p>
-        </div>
+      <div class="form-group">
+        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
       </div>
-      <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-        <div class="align-self-stretch box p-4 text-center">
-          <div class="icon d-flex align-items-center justify-content-center">
-            <i class="fab fa-twitter fa-2x"></i>
-          </div>
-          <h3 class="mb-4">Twitter</h3>
-          <p><a href="https://x.com/sylpnmld?t=ZPaPpVEk1iCPQxRlhWUpwg&s=08" target="_blank">@sylpnmld</a></p>
-        </div>
+      <div class="form-group">
+        <textarea name="message" rows="5" class="form-control" placeholder="Your Message" required></textarea>
       </div>
-      <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-        <div class="align-self-stretch box p-4 text-center">
-          <div class="icon d-flex align-items-center justify-content-center">
-            <i class="fas fa-envelope fa-2x"></i>
-          </div>
-          <h3 class="mb-4">Email</h3>
-          <p>sylpianamaulida@gmail.com</p>
-        </div>
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-warning px-5 py-2 text-dark font-weight-bold">Send Message</button>
+      </div>
+    </form>
+    <div id="formMessage" class="text-center text-success mt-3" style="display:none;">Pesan sudah terkirim, terima kasih!</div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // cegah reload halaman
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();               // reset form
+        formMessage.style.display = 'block'; // tampilkan pesan sukses
+      } else {
+        alert('Terjadi kesalahan, coba lagi nanti.');
+      }
+    })
+    .catch(() => {
+      alert('Terjadi kesalahan, coba lagi nanti.');
+    });
+  });
+</script>
+
+<footer class="footer-section text-white py-5" style="background-color: #000000;">
+  <div class="container">
+    <div class="row text-center small gy-4">
+      <!-- Sosial Media & Kontak -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <i class="fab fa-instagram text-warning fs-4 mb-2"></i><br>
+        <a href="https://www.instagram.com/sylpnmld" target="_blank" class="text-white text-decoration-none">@sylpnmld</a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <i class="fab fa-linkedin text-warning fs-4 mb-2"></i><br>
+        <a href="https://www.linkedin.com/in/sylpiana-maulida-3720a2308" target="_blank" class="text-white text-decoration-none">LinkedIn</a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <i class="fab fa-twitter text-warning fs-4 mb-2"></i><br>
+        <a href="https://x.com/sylpnmld" target="_blank" class="text-white text-decoration-none">@sylpnmld</a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <i class="fas fa-envelope text-warning fs-4 mb-2"></i><br>
+        <span class="text-white small">sylpianamaulida@gmail.com</span>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <i class="fas fa-phone text-warning fs-4 mb-2"></i><br>
+        <a href="https://wa.me/qr/J6B4CSKKOVX2G1" class="text-white text-decoration-none">+6288292019437</a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <i class="fas fa-map-marker-alt text-warning fs-4 mb-2"></i><br>
+        <span class="text-white small">Bogor, Jawa Barat</span>
       </div>
     </div>
-
-    <!-- Baris baru untuk dua kolom di tengah -->
-    <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-        <div class="align-self-stretch box p-4 text-center">
-          <div class="icon d-flex align-items-center justify-content-center">
-            <i class="fas fa-phone fa-2x"></i>
-          </div>
-          <h3 class="mb-4">Phone</h3>
-          <p><a href="https://wa.me/qr/J6B4CSKKOVX2G1">+6288292019437</a></p>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-        <div class="align-self-stretch box p-4 text-center">
-          <div class="icon d-flex align-items-center justify-content-center">
-            <i class="fas fa-map-marker-alt fa-2x"></i>
-          </div>
-          <h3 class="mb-4">Address</h3>
-          <p>Jln. Sela Galih Jawa Barat - Kec. Bogor Barat - Kota - BOGOR</p>
-        </div>
+    <hr class="border-secondary my-4">
+    <div class="row">
+      <div class="col text-center">
+        <p class="mb-0 text-secondary small">&copy; 2025 Sylpiana Maulida</p>
       </div>
     </div>
   </div>
-</section>
-<style>
-  .icon i {
-  color: #ffc107;
-}
-p, p a{
-  color: white !important;
-}
-  </style>
+</footer>
+
+
+
 
 		
 
